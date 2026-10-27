@@ -1,24 +1,46 @@
+import { useCallback, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { ShowreelPlayer } from "@/components/site/ShowreelPlayer";
+import { FeaturedReels } from "@/components/site/FeaturedReels";
+import { Collections } from "@/components/site/Collections";
+import { About, Contact, Footer, Services } from "@/components/site/InfoSections";
+import { VideoModal, type ActiveVideo } from "@/components/site/VideoModal";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "EditorFX | Video Editor & AI Video Producer" },
+      { name: "description", content: "Explore cinematic video editing, AI video production, motion graphics, and promotional videos by Hassan Howlader." },
+      { property: "og:title", content: "EditorFX | Video Editor & AI Video Producer" },
+      { property: "og:description", content: "Explore cinematic video editing, AI video production, motion graphics, and promotional videos by Hassan Howlader." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [video, setVideo] = useState<ActiveVideo | null>(null);
+  const close = useCallback(() => setVideo(null), []);
+  const open = useCallback((p: ActiveVideo) => setVideo({ title: p.title, youtubeVideoId: p.youtubeVideoId }), []);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <ShowreelPlayer />
+        <FeaturedReels onOpen={open} />
+        <Collections onOpen={open} />
+        <About />
+        <Services />
+        <Contact />
+      </main>
+      <Footer />
+      <VideoModal video={video} onClose={close} />
     </div>
   );
 }
