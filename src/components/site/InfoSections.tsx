@@ -1,4 +1,4 @@
-import { ArrowRight, Clapperboard, Layers, Mail, Megaphone, MessageCircle, Smartphone, Sparkles } from "lucide-react";
+import { ArrowRight, Clapperboard, Facebook, Layers, Mail, Megaphone, MessageCircle, Smartphone, Sparkles } from "lucide-react";
 import { brand, contact, socials } from "@/config/portfolio";
 import { Avatar } from "./Avatar";
 import { Logo } from "./Logo";
@@ -53,6 +53,9 @@ export function Services() {
 }
 
 export function Contact() {
+  const contactButtonClass =
+    "inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary-deep hover:text-foreground";
+
   return (
     <section id="contact" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-20">
       <div className="relative overflow-hidden rounded-xl border border-primary/50 bg-surface p-8 text-center frame-glow sm:p-14">
@@ -60,12 +63,17 @@ export function Contact() {
         <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-extrabold uppercase sm:text-5xl">Let's create something <span className="text-primary">great.</span></h2>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">Have a project in mind? Let's turn your ideas into compelling visual content.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary-deep hover:text-foreground">
+          <a href={`mailto:${contact.email}`} className={contactButtonClass}>
             <Mail className="h-4 w-4" /> Email me
           </a>
           {contact.whatsapp && (
-            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-primary/70 px-6 py-3.5 text-xs font-bold uppercase tracking-wider hover:bg-primary/10">
+            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer" className={contactButtonClass}>
               <MessageCircle className="h-4 w-4" /> WhatsApp
+            </a>
+          )}
+          {contact.messenger && (
+            <a href={contact.messenger} target="_blank" rel="noreferrer" className={contactButtonClass}>
+              <Facebook className="h-4 w-4" /> Messenger
             </a>
           )}
         </div>

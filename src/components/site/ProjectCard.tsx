@@ -14,7 +14,7 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p:
       className="group block w-full text-left"
       aria-label={`Play ${project.title}`}
     >
-      <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-surface shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/70">
+      <div className={`relative ${project.aspectRatio === "portrait" ? "aspect-[9/16]" : "aspect-video"} overflow-hidden rounded-md border border-border bg-surface shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/70`}>
         {src && !failed ? (
           <img
             src={src}

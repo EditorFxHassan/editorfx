@@ -5,6 +5,7 @@ import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeWatchUrl } from "@/lib/yout
 export interface ActiveVideo {
   title: string;
   youtubeVideoId: string;
+  aspectRatio?: "portrait" | "landscape";
 }
 
 export function VideoModal({ video, onClose }: { video: ActiveVideo | null; onClose: () => void }) {
@@ -31,7 +32,7 @@ export function VideoModal({ video, onClose }: { video: ActiveVideo | null; onCl
       className="fixed inset-0 z-50 flex items-center justify-center bg-scrim/90 p-3 backdrop-blur-sm animate-in fade-in sm:p-8"
       onClick={onClose}
     >
-      <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+      <div className={video.aspectRatio === "portrait" ? "w-[min(90vw,43.875vh)]" : "w-full max-w-5xl"} onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center justify-between gap-4">
           <h3 className="truncate text-sm font-semibold sm:text-base">{video.title}</h3>
           <button
@@ -43,7 +44,7 @@ export function VideoModal({ video, onClose }: { video: ActiveVideo | null; onCl
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="aspect-video overflow-hidden rounded-lg border border-primary/50 bg-surface">
+        <div className={`${video.aspectRatio === "portrait" ? "aspect-[9/16] max-h-[78vh]" : "aspect-video"} overflow-hidden rounded-lg border border-primary/50 bg-surface`}>
           {id ? (
             <iframe
               className="h-full w-full"

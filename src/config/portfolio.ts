@@ -19,7 +19,7 @@ import reelKl from "@/assets/reel-kl.jpg";
 import colMotion from "@/assets/col-motion.jpg";
 import colSocial from "@/assets/col-social.jpg";
 
-export type Category = "editing" | "ai-generated" | "ai-motion";
+export type Category = "editing" | "ai-generated" | "ai-motion" | "motion-design";
 export type CollectionId = "commercial" | "ai" | "motion" | "documentary" | "social";
 
 export interface Project {
@@ -33,6 +33,8 @@ export interface Project {
   description: string;
   featured: boolean;
   collection: CollectionId;
+  /** Display shape for the video player and card. Shorts use portrait (9:16). */
+  aspectRatio?: "portrait" | "landscape";
 }
 
 /* ---------- BRAND & PROFILE ---------- */
@@ -42,15 +44,15 @@ export const brand = {
   title: "Video Editor & AI Video Producer",
   tagline: "Your work. Your story. Your brand.",
   /** Replace with your own photo URL or imported image. Empty = initials placeholder. */
-  profileImage: "",
+  profileImage: "/profile.png",
   heroImage,
 };
 
 /* ---------- SHOWREEL ---------- */
 export const showreel = {
   /** Paste your showreel YouTube ID or link here. */
-  youtubeVideoId: "",
-  thumbnail: heroImage,
+  youtubeVideoId: "zgcljZ5mODo",
+  thumbnail: "https://img.youtube.com/vi/zgcljZ5mODo/hqdefault.jpg",
   title: "Showreel",
   label: "Video Editing / AI Video Production",
 };
@@ -59,7 +61,9 @@ export const showreel = {
 export const contact = {
   email: "editorfx.hassan@gmail.com",
   /** International format without + or spaces, e.g. "8801XXXXXXXXX". Empty = hidden. */
-  whatsapp: "",
+  whatsapp: "8801616896868",
+  /** Messenger profile link. */
+  messenger: "https://m.me/EditorFx.Hassan",
 };
 
 /** Add your profile URLs. Empty links are not shown. */
@@ -76,6 +80,7 @@ export const categoryLabels: Record<Category, string> = {
   editing: "Video Editing",
   "ai-generated": "AI Generated",
   "ai-motion": "AI + Motion",
+  "motion-design": "Motion Design",
 };
 
 /* ---------- COLLECTIONS ---------- */
@@ -87,12 +92,54 @@ export const collections: { id: CollectionId; title: string; description: string
   { id: "social", title: "Social Media Reels", description: "Short-form content, vertical videos and engaging reels for social media.", thumbnail: colSocial },
 ];
 
-/* ---------- PROJECTS (placeholder examples — replace with your own) ---------- */
+/* ---------- PROJECTS ---------- */
 export const projects: Project[] = [
-  { id: "dream-drive", title: "Dream Drive", youtubeVideoId: "", customThumbnail: reelCar, category: "editing", projectType: "Car Commercial | Brand Promo", duration: "1:02", description: "Placeholder commercial edit.", featured: true, collection: "commercial" },
-  { id: "last-light", title: "The Last Light", youtubeVideoId: "", customThumbnail: reelLight, category: "ai-generated", projectType: "Cinematic AI Short Film", duration: "0:48", description: "Placeholder AI short film.", featured: true, collection: "ai" },
-  { id: "new-zealand", title: "New Zealand", youtubeVideoId: "", customThumbnail: reelNz, category: "editing", projectType: "Travel Promo", duration: "0:37", description: "Placeholder travel promo.", featured: true, collection: "documentary" },
-  { id: "think-bigger", title: "Think Bigger", youtubeVideoId: "", customThumbnail: reelFuture, category: "ai-motion", projectType: "AI Brand Film", duration: "0:52", description: "Placeholder AI brand film.", featured: true, collection: "ai" },
-  { id: "kuala-lumpur", title: "Kuala Lumpur", youtubeVideoId: "", customThumbnail: reelKl, category: "editing", projectType: "Travel Vlog", duration: "0:41", description: "Placeholder travel vlog.", featured: true, collection: "social" },
-  { id: "motion-pack", title: "Kinetic Lines", youtubeVideoId: "", customThumbnail: colMotion, category: "ai-motion", projectType: "Motion Design", duration: "0:30", description: "Placeholder motion piece.", featured: false, collection: "motion" },
+  {
+    id: "product-promo-01",
+    title: "Product Promo 01",
+    youtubeVideoId: "6aBZ9MBF1mg",
+    category: "editing",
+    projectType: "Product Promotional Video",
+    duration: "Shorts",
+    description: "Product promotional video edited by EditorFX.",
+    featured: true,
+    collection: "commercial",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "service-promo-01",
+    title: "Service Promo 01",
+    youtubeVideoId: "SZInDReAjug",
+    category: "editing",
+    projectType: "Service Promotional Video",
+    duration: "Shorts",
+    description: "Service promotional video edited by EditorFX.",
+    featured: true,
+    collection: "commercial",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "motion-design-01",
+    title: "Motion Design 01",
+    youtubeVideoId: "QmwX7-6dh08",
+    category: "motion-design",
+    projectType: "Motion Design",
+    duration: "Shorts",
+    description: "Motion design project by EditorFX.",
+    featured: true,
+    collection: "motion",
+    aspectRatio: "portrait",
+  },
+  {
+    id: "ai-generated-01",
+    title: "AI Generated 01",
+    youtubeVideoId: "b6IesYyp3k0",
+    category: "ai-generated",
+    projectType: "AI-Generated Video",
+    duration: "Shorts",
+    description: "AI-generated promotional video by EditorFX.",
+    featured: true,
+    collection: "ai",
+    aspectRatio: "portrait",
+  },
 ];

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [video, setVideo] = useState<ActiveVideo | null>(null);
   const close = useCallback(() => setVideo(null), []);
-  const open = useCallback((p: ActiveVideo) => setVideo({ title: p.title, youtubeVideoId: p.youtubeVideoId }), []);
+  const open = useCallback((p: ActiveVideo) => setVideo({ title: p.title, youtubeVideoId: p.youtubeVideoId, aspectRatio: p.aspectRatio }), []);
 
   return (
     <div className="min-h-screen overflow-x-hidden">

@@ -8,6 +8,7 @@ const filters: { id: "all" | Category; label: string }[] = [
   { id: "editing", label: "Editing" },
   { id: "ai-generated", label: "AI Generated" },
   { id: "ai-motion", label: "AI + Motion" },
+  { id: "motion-design", label: "Motion Design" },
 ];
 
 export function FeaturedReels({ onOpen }: { onOpen: (p: Project) => void }) {
