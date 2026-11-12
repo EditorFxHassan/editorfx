@@ -11,7 +11,7 @@
  *    or paste a full https:// image URL.
  */
 import heroImage from "@/assets/hero.jpg";
-import studioHero from "@/assets/studio-hero.png.asset.json";
+import studioHero from "@/assets/studio-hero.png";
 import reelCar from "@/assets/reel-car.jpg";
 import reelLight from "@/assets/reel-light.jpg";
 import reelNz from "@/assets/reel-nz.jpg";
@@ -47,7 +47,7 @@ export const brand = {
   /** Replace with your own photo URL or imported image. Empty = initials placeholder. */
   profileImage: "/profile.png",
   /** Hero background image. */
-  heroImage: studioHero.url,
+  heroImage: studioHero,
 };
 
 /* ---------- SHOWREEL ---------- */
