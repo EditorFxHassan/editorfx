@@ -16,8 +16,10 @@ export function ShowreelPlayer() {
           <button onClick={() => id && setPlaying(true)} className="group absolute inset-0 h-full w-full cursor-pointer" aria-label={id ? "Play showreel" : "Showreel coming soon"}>
             <img src={showreel.thumbnail} alt="Showreel cover" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <div className="absolute inset-0 bg-scrim/45" />
-            <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-scrim/40 transition-transform group-hover:scale-110 sm:bottom-5 sm:left-5 sm:h-12 sm:w-12">
-              <Play className="ml-0.5 h-4 w-4 fill-current sm:h-5 sm:w-5" />
+            <span className="absolute inset-0 grid place-items-center">
+              <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-scrim/40 transition-transform group-hover:scale-110 sm:h-12 sm:w-12">
+                <Play className="ml-0.5 h-4 w-4 fill-current sm:h-5 sm:w-5" />
+              </span>
             </span>
             {!id && <span className="absolute bottom-3 right-3 rounded-full bg-scrim/70 px-3 py-1 text-xs text-muted-foreground sm:bottom-5 sm:right-5">Showreel coming soon</span>}
           </button>
