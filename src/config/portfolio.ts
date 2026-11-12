@@ -129,7 +129,7 @@ export const projects: Project[] = [
     duration: "Shorts",
     description: "Europe Study Abroad Promo | Video Editing Showcase",
     featured: false,
-    collection: "commercial",
+    collection: "social",
     aspectRatio: "portrait",
   },
   {
