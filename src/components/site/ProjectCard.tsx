@@ -2,20 +2,22 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import { categoryLabels, type Project } from "@/config/portfolio";
 import { getYouTubeId, getYouTubeThumbnail } from "@/lib/youtube";
+import { Button } from "@/components/ui/button";
 
-export function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Project) => void }) {
+export function ProjectCard({ project, onOpen, thumbnailQuality = "hqdefault" }: { project: Project; onOpen: (p: Project) => void; thumbnailQuality?: "hqdefault" | "maxresdefault" }) {
   const id = getYouTubeId(project.youtubeVideoId);
   const [failed, setFailed] = useState(false);
-  const src = project.customThumbnail || (id ? getYouTubeThumbnail(id) : "");
+  const src = project.customThumbnail || (id ? getYouTubeThumbnail(id, failed ? "hqdefault" : thumbnailQuality) : "");
 
   return (
-    <button
+    <Button
+      variant="ghost"
       onClick={() => onOpen(project)}
-      className="group block w-full text-left"
+      className="group block h-auto w-full whitespace-normal rounded-none p-0 text-left hover:bg-transparent"
       aria-label={`Play ${project.title}`}
     >
       <div className={`relative ${project.aspectRatio === "portrait" ? "aspect-[9/16]" : "aspect-video"} overflow-hidden rounded-md border border-border bg-surface shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/70`}>
-        {src && !failed ? (
+        {src && (!failed || thumbnailQuality === "maxresdefault") ? (
           <img
             src={src}
             alt={project.title}
@@ -47,6 +49,6 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p:
       </span>
       <p className="mt-1.5 truncate text-sm font-medium">{project.projectType}</p>
       {!id && <p className="text-xs text-muted-foreground">Video coming soon</p>}
-    </button>
+    </Button>
   );
 }
