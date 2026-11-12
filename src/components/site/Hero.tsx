@@ -22,9 +22,6 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <p className="absolute right-8 top-1/3 hidden rotate-[-8deg] text-right font-script text-3xl leading-tight text-foreground/80 lg:block">
-          Real Edits.<br />AI Magic.<br />Your Story.
-        </p>
       </div>
     </section>
   );
