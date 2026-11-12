@@ -12,7 +12,7 @@ export function getYouTubeId(input: string | undefined | null): string {
   ];
   for (const p of patterns) {
     const m = value.match(p);
-    if (m) return m[1];
+    if (m?.[1]) return m[1];
   }
   return "";
 }

@@ -5,7 +5,7 @@ import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeWatchUrl } from "@/lib/yout
 export interface ActiveVideo {
   title: string;
   youtubeVideoId: string;
-  aspectRatio?: "portrait" | "landscape";
+  aspectRatio?: "portrait" | "landscape" | undefined;
 }
 
 export function VideoModal({ video, onClose }: { video: ActiveVideo | null; onClose: () => void }) {
