@@ -54,7 +54,7 @@ export const brand = {
 export const showreel = {
   /** Paste your showreel YouTube ID or link here. */
   youtubeVideoId: "zgcljZ5mODo",
-  thumbnail: "https://img.youtube.com/vi/zgcljZ5mODo/hqdefault.jpg",
+  thumbnail: "https://img.youtube.com/vi/zgcljZ5mODo/maxresdefault.jpg",
   title: "Showreel",
   label: "Video Editing / AI Video Production",
 };
