@@ -41,8 +41,8 @@ export function FeaturedReels({ onOpen }: { onOpen: (p: Project) => void }) {
         <a href="#collections" className="hidden items-center gap-1.5 text-sm text-primary md:inline-flex">View All <ArrowRight className="h-4 w-4" /></a>
       </div>
       {list.length ? (
-        <div key={active} className="mt-6 grid grid-cols-1 gap-5 fade-up min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {list.map((p) => <ProjectCard key={p.id} project={p} onOpen={onOpen} thumbnailQuality="maxresdefault" />)}
+        <div key={active} className="mt-6 grid grid-cols-5 gap-1.5 fade-up sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-5">
+          {list.map((p) => <ProjectCard key={p.id} project={p} onOpen={onOpen} thumbnailQuality="maxresdefault" compact />)}
         </div>
       ) : (
         <p className="mt-6 rounded-lg border border-dashed border-border p-10 text-center text-sm text-muted-foreground">New projects in this category are on the way.</p>
