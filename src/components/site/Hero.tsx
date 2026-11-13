@@ -3,10 +3,23 @@ import { brand } from "@/config/portfolio";
 
 export function Hero() {
   return (
-    <section id="home" className="relative -mb-24 overflow-hidden bg-black scroll-mt-20">
+    <section id="home" className="relative -mb-24 overflow-hidden bg-black scroll-mt-20 max-sm:mb-5">
+      {/* Phone layout (<640px): full-width cover photo with name + title on top. Desktop layout below is unchanged. */}
+      <div className="relative sm:hidden">
+        <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <img src={brand.heroImage} alt="" width={1983} height={793} className="h-full w-full object-cover object-[55%_center]" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 70%)" }} />
+          <div className="absolute inset-x-0 bottom-0 h-1/4" style={{ background: "linear-gradient(to top, #000 0%, rgba(0,0,0,0) 100%)" }} />
+          <div className="absolute inset-x-0 top-0 px-5 pt-5">
+            <p className="eyebrow text-foreground/85 text-[0.65rem]!">Hi, I'm {brand.person}</p>
+            <p className="mt-1.5 text-lg font-bold leading-tight">{brand.title}</p>
+          </div>
+        </div>
+      </div>
+
       {/* Background image: same column as the showreel (max-w-7xl + px-5). The wrapper is clipped and faded
           to black at both edges; the image is shifted right on desktop so the workstation clears the headline. */}
-      <div className="pointer-events-none absolute inset-0 mx-auto max-w-7xl px-5 max-sm:bottom-28 max-sm:top-auto">
+      <div className="pointer-events-none absolute inset-0 mx-auto max-w-7xl px-5 max-sm:hidden">
         <div className="hero-image-fade relative h-full w-full overflow-hidden max-sm:aspect-[1983/793] max-sm:h-auto">
           <img
             src={brand.heroImage}
@@ -19,10 +32,10 @@ export function Hero() {
       </div>
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 hero-scrim max-sm:[background:none]!" />
+      <div className="absolute inset-0 hero-scrim max-sm:hidden" />
 
       {/* Hero content */}
-      <div className="relative mx-auto max-w-7xl px-5 pb-36 pt-14 max-sm:pb-[calc(8rem_+_(100vw_-_2.5rem)_/_2.5)] max-sm:pt-10 sm:pt-20">
+      <div className="relative mx-auto max-w-7xl px-5 pb-36 pt-14 max-sm:hidden sm:pt-20">
         <div className="max-w-xl fade-up">
           <p className="eyebrow text-foreground/80 max-sm:text-[0.6rem]!">
             Hi, I'm {brand.person}
