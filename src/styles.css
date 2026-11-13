@@ -112,10 +112,31 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Left stops are measured from the left edge of the showreel-width column (max 1240px, centred), so the
+   dark text zone tracks the headline instead of a fixed % of the viewport. */
 @utility hero-scrim {
+  --hero-left: max(0px, calc((100% - 1240px) / 2));
   background:
-    linear-gradient(90deg, var(--scrim) 0%, color-mix(in oklab, var(--scrim) 75%, transparent) 35%, transparent 70%),
+    linear-gradient(
+      90deg,
+      var(--scrim) 0,
+      var(--scrim) calc(var(--hero-left) + 140px),
+      color-mix(in oklab, var(--scrim) 80%, transparent) calc(var(--hero-left) + 340px),
+      color-mix(in oklab, var(--scrim) 35%, transparent) calc(var(--hero-left) + 480px),
+      transparent calc(var(--hero-left) + 660px)
+    ),
     linear-gradient(0deg, var(--background) 0%, transparent 35%);
+  @media (max-width: 1023px) {
+    background:
+      linear-gradient(90deg, color-mix(in oklab, var(--scrim) 88%, transparent) 0%, color-mix(in oklab, var(--scrim) 55%, transparent) 100%),
+      linear-gradient(0deg, var(--background) 0%, transparent 35%);
+  }
+}
+
+/* Fades the hero artwork into black at both edges of the showreel-width column. */
+@utility hero-image-fade {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 86%, transparent 100%);
 }
 
 @utility thumb-scrim {

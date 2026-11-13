@@ -11,7 +11,7 @@
  *    or paste a full https:// image URL.
  */
 import heroImage from "@/assets/hero.jpg";
-import studioHero from "@/assets/studio-hero.png";
+import studioHero from "@/assets/Video Editing Studio.png";
 import reelCar from "@/assets/reel-car.jpg";
 import reelLight from "@/assets/reel-light.jpg";
 import reelNz from "@/assets/reel-nz.jpg";
